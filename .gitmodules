@@ -1,6 +1,6 @@
 [submodule "attribute-service"]
 	path = attribute-service
-	url = https://https://github.com/suddendust/attribute-service.git
+	url = https://github.com/suddendust/attribute-service.git
 	branch = main
 [submodule "entity-service"]
 	path = entity-service
