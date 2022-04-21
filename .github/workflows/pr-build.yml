@@ -31,13 +31,6 @@ jobs:
           restore-keys: |
             gradle-packages-${{ runner.os }}-${{ github.job }}
             gradle-packages-${{ runner.os }}
-
-      - name: Login to Harbor
-        uses: docker/login-action@v1
-        with:
-          password: ${{ secrets.HARBOR_DOCKER_PASSWORD }}
-          registry: c.rzp.io
-          username: ${{ secrets.HARBOR_DOCKER_USERNAME }}
       
       - name: Build with Gradle
         uses: hypertrace/github-actions/gradle@main
