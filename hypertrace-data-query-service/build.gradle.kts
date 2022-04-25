@@ -41,13 +41,14 @@ application {
 
 hypertraceDocker {
   image("hypertrace-data-query-service-custom-image-2") {
-    dockerFile.set(file("build/docker/Dockerfile"))
+    dockerFile.set(file("../hypertrace-service/Dockerfile"))
+    buildArgs.put("HYPERTRACE_UI_VERSION", "latest")
     javaApplication {
       envVars.put("CLUSTER_NAME", "default-cluster")
       envVars.put("POD_NAME", "default-pod")
     }
   }
-  tag("custom-tag-2") {
+  tag("custom-tag-3") {
     onlyIf { candidateImage ->
       candidateImage.name == "hypertrace-data-query-service-custom-image-2"
     }
