@@ -45,10 +45,15 @@ application {
 }
 
 hypertraceDocker {
-  defaultImage {
+  image("hypertrace-service") {
     imageName.set("hypertrace")
     buildArgs.put("HYPERTRACE_UI_VERSION", hypertraceUiVersion)
     dockerFile.set(file("Dockerfile"))
+  }
+  tag(project.version.toString()) {
+    onlyIf { candidateImage ->
+      candidateImage.name == "hypertrace-service"
+    }
   }
 }
 

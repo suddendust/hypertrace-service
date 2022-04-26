@@ -40,17 +40,10 @@ application {
 }
 
 hypertraceDocker {
-  image("hypertrace-data-query-service") {
-    dockerFile.set(file("../hypertrace-service/Dockerfile"))
-    buildArgs.put("HYPERTRACE_UI_VERSION", "latest")
+  defaultImage {
     javaApplication {
       envVars.put("CLUSTER_NAME", "default-cluster")
       envVars.put("POD_NAME", "default-pod")
-    }
-  }
-  tag(project.version.toString()) {
-    onlyIf { candidateImage ->
-      candidateImage.name == "hypertrace-data-query-service"
     }
   }
 }
