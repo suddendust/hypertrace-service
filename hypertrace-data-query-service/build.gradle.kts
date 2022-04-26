@@ -40,7 +40,7 @@ application {
 }
 
 hypertraceDocker {
-  image(project.version.toString()) {
+  image("secondImage") {
     dockerFile.set(file("../hypertrace-service/Dockerfile"))
     buildArgs.put("HYPERTRACE_UI_VERSION", "latest")
     javaApplication {
